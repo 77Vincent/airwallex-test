@@ -7,7 +7,7 @@ export default (props) => {
   return (
     <footer
       className="App-footer"
-      style={{backgroundImage: `url(${BACKGROUND_IMAGE_URL})`}}
+      // style={{backgroundImage: `url(${BACKGROUND_IMAGE_URL})`}}
     >
       <div>Made with love Melbourne.</div>
       <div>© 2016 Broccoli & Co. All rights reserved.</div>

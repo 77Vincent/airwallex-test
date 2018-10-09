@@ -1,16 +1,28 @@
 import React, { Component } from 'react'
+import { Layout } from 'antd'
 
-import { Header, Footer } from './components'
+import { Header, Footer, Welcome } from './components'
 import './App.scss'
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import 'antd/dist/antd.css'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Header />
-        <Footer />
-      </div>
+      <Layout>
+        <div className="App">
+          <Layout.Header>
+            <Header />
+          </Layout.Header>
+
+          <Layout.Content>
+            <Welcome />
+          </Layout.Content>
+
+          <Layout.Footer>
+            <Footer />
+          </Layout.Footer>
+        </div>
+      </Layout>
     )
   }
 }
