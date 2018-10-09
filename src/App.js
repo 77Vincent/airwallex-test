@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 import { Header, Footer } from './components'
-import './App.scss';
+import './App.scss'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 class App extends Component {
   render() {
@@ -10,8 +11,8 @@ class App extends Component {
         <Header />
         <Footer />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
