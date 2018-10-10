@@ -5,9 +5,7 @@ import './index.scss'
 
 export default (props) => {
   return (
-    <header
-      className="App-header"
-    >
+    <header className="App-header" >
       <div>
         <img alt="BROCCOLI & CO" src={logo} className="App-header-logo" />
       </div>

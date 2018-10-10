@@ -5,11 +5,7 @@ import './index.scss'
 
 export default (props) => {
   return (
-    <Row
-      type="flex"
-      align="middle"
-      className="App-welcome"
-    >
+    <Row className="App-welcome">
       <Col>
         <div className="App-welcome-slogan">A better way to enjoy every day.</div>
         <div>Be the first to know when we launch.</div>
