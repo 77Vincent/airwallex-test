@@ -1,7 +1,14 @@
 .App-welcome {
-  text-align: center;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
 
-  .App-welcome-slogan {
-    font-size: 4em;
+  .App-welcome-content {
+    text-align: center;
+
+    .App-welcome-slogan {
+      font-size: 4em;
+    }
   }
 }

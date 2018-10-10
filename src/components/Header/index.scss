@@ -1,4 +1,13 @@
+@import '../../base/var.scss';
+
 .App-header {
+  background-color: $color-gray-dark;
+  height: 60px;
+
+  .App-header-content {
+    line-height: 60px;
+  }
+
   .App-header-logo {
     height: 20px;
   }

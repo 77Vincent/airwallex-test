@@ -1,11 +1,20 @@
 @import './var.scss';
 
 .App {
-  min-height: 100vh;
   position: relative;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  flex-direction: column;
   color: $color-black;
+  min-height: 100vh;
+
+  .App-content {
+    position: relative;
+  }
 }
 
+// Text styles 
 .App-text-title {
 
 }
@@ -15,6 +24,7 @@
   font-style: italic;
   font-weight: 700;
   color: $color-gray-dark;
+  margin: 0.5em 0 1em;
 }
 
 .App-text-body {

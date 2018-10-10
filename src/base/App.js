@@ -1,33 +1,29 @@
 // Third-party dependencies
 import React, { Component } from 'react'
-import { Layout } from 'antd'
+import { BrowserRouter, Route } from "react-router-dom"
 
 // Custom dependencies
 import store from '../store' 
 import { Provider } from 'react-redux'
 import { Header, Footer, Welcome } from '../components'
 import './App.scss'
-import 'antd/dist/antd.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Layout>
+        <BrowserRouter>
           <div className="App">
-            <Layout.Header>
-              <Header />
-            </Layout.Header>
+            <Header />
 
-            <Layout.Content>
-              <Welcome />
-            </Layout.Content>
+            <div className="App-content container">
+              <Route path="/" exact component={Welcome} />
+            </div>
 
-            <Layout.Footer>
-              <Footer />
-            </Layout.Footer>
+            <Footer />
           </div>
-        </Layout>
+        </BrowserRouter>
       </Provider>
     )
   }

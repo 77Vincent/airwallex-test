@@ -16,10 +16,13 @@ export default (props) => {
         <RequestForm />
       </Modal>
 
-      <div className="App-welcome-slogan">A better way to enjoy every day.</div>
-      <div>Be the first to know when we launch.</div>
+      <div className="App-welcome-content">
+        <div className="App-welcome-slogan">A better way to enjoy every day.</div>
 
-      <button onClick={showRequestForm}>Request an invite</button>
+        <div>Be the first to know when we launch.</div>
+
+        <button onClick={showRequestForm}>Request an invite</button>
+      </div>
     </div>
   )
 }

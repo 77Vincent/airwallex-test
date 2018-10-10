@@ -1,4 +1,7 @@
+@import '../../base/var.scss';
+
 .App-footer {
-  padding: 21px 0;
+  height: 75px;
   text-align: center;
+  background-color: $color-gray-dark;
 }
