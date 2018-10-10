@@ -2,16 +2,15 @@
 
 .App {
   position: relative;
-  display: flex;
-  display: -webkit-flex;
-  justify-content: space-between;
-  flex-direction: column;
   color: $color-black;
-  min-height: 100vh;
+}
 
-  .App-content {
-    position: relative;
-  }
+.App-full-height {
+  min-height: 100vh;
+  margin-top: -60px;
+  margin-bottom: -75px;
+  padding-top: 60px;
+  padding-bottom: 75px;
 }
 
 // Text styles 

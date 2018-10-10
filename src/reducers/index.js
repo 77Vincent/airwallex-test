@@ -3,7 +3,7 @@ import { combineReducers } from 'redux'
 import { PUT, TOGGLE } from '../actions/types'
 
 const initialState = {
-  requestFormDisplayed: true,
+  requestFormDisplayed: false,
   requestSent: false,
 }
 

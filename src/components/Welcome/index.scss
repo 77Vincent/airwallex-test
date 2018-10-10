@@ -1,11 +1,11 @@
 .App-welcome {
   display: flex;
-  display: -webkit-flex;
   align-items: center;
   justify-content: center;
 
   .App-welcome-content {
     text-align: center;
+    color: white;
 
     .App-welcome-slogan {
       font-size: 4em;

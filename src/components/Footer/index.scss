@@ -2,6 +2,10 @@
 
 .App-footer {
   height: 75px;
+  display: flex;
+  color: $color-white;
+  align-items: center;
   text-align: center;
   background-color: $color-gray-dark;
+  font-size: 0.9em;
 }
