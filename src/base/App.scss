@@ -1,4 +1,30 @@
+@import './var.scss';
+
 .App {
   min-height: 100vh;
   position: relative;
+  color: $color-black;
+}
+
+.App-text-title {
+
+}
+
+.App-text-subtitle {
+  font-size: 1.5em;
+  font-style: italic;
+  font-weight: 700;
+  color: $color-gray-dark;
+}
+
+.App-text-body {
+
+}
+
+.App-text-body-2 {
+
+}
+
+.App-text-footnote {
+
 }

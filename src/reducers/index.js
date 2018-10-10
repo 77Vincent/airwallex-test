@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
-import { PUT, DISPLAY, HIDE, TOGGLE } from '../actions/types'
+import { PUT, TOGGLE } from '../actions/types'
 
 const initialState = {
-  requestFormDisplayed: false,
+  requestFormDisplayed: true,
   requestSent: false,
 }
 
@@ -20,16 +20,6 @@ const requestInvite = (state = initialState, action) => {
       return {
         ...state,
         requestFormDisplayed: action.payload,
-      } 
-    case DISPLAY:
-      return {
-        ...state,
-        requestFormDisplayed: true,
-      } 
-    case HIDE:
-      return {
-        ...state,
-        requestFormDisplayed: false,
       } 
   }
 }
