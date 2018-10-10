@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 import { Layout } from 'antd'
 
 // Custom dependencies
-import store from './store' 
+import store from '../store' 
 import { Provider } from 'react-redux'
-import { Header, Footer, Welcome } from './components'
+import { Header, Footer, Welcome } from '../components'
 import './App.scss'
 import 'antd/dist/antd.css'
 

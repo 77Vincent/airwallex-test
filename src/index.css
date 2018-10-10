@@ -1,3 +1,5 @@
+/* Only add properties that alter native DOM elements */
+
 body {
   margin: 0;
   padding: 0;
