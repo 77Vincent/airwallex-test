@@ -1,2 +1,5 @@
+@import '../../base/var.scss';
+
 .App-input {
+  border: 1px solid $color-theme;
 }
