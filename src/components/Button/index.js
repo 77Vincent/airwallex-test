@@ -2,7 +2,7 @@ import React from 'react';
 
 import './index.scss'
 
-export default ({ onClick, inputStyle, className, children, size = 'l'}) => {
+export default ({ light, type = 'basic', onClick, style, className, children, size = 'l'}) => {
   const fontSize = {
     s: '0.9em',
     m: '1.2em',
@@ -15,15 +15,22 @@ export default ({ onClick, inputStyle, className, children, size = 'l'}) => {
     l: '0.5em 2.4em',
   }
 
-  const style = Object.assign({
+  const buttonType = {
+    basic: 'App-button-basic',
+    void: 'App-button-void',
+  }
+
+  const buttonTypeClass = buttonType[type] ? buttonType[type] : null
+
+  const mergedStyle = Object.assign({
     fontSize: fontSize[size],
     padding: padding[size],
-  }, inputStyle)
+  }, style)
 
   return (
     <div
-      className={`App-button ${className}`}
-      style={style}
+      className={`App-button ${buttonTypeClass} ${className} ${light ? 'App-button-light' : null}`}
+      style={mergedStyle}
       onClick={onClick}
     >
       {children}

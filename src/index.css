@@ -1,9 +1,0 @@
-/* Only add properties that alter native DOM elements */
-body {
-}
-
-input {
-  border: none;
-  padding: 3px 6px;
-  width: 100%;
-}

@@ -26,7 +26,12 @@ export default (props) => {
 
         <div className="App-text-title">Be the first to know when we launch.</div>
 
-        <Button onClick={showRequestForm}> Request an invite </Button>
+        <Button
+          className="App-welcome-request"
+          onClick={showRequestForm}
+          type="void"
+          light
+        > Request an invite </Button>
       </div>
     </div>
   )

@@ -1,3 +1,5 @@
+@import '../../base/var.scss';
+
 .App-welcome {
   display: flex;
   align-items: center;
@@ -16,6 +18,10 @@
     background-color: #000;
     opacity: 0.3;
     z-index: 0;
+  }
+
+  .App-welcome-request {
+    color: white;
   }
 
   .App-welcome-content {

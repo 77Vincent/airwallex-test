@@ -4,16 +4,37 @@
   display: inline-block;
   cursor: pointer;
   font-style: italic;
-  background-color: $color-white-semitransparent;
-  color: $color-theme;
-  border: 1px solid $color-gray;
   text-align: center;
 
-  &:hover {
-    border-color: $color-theme;
-    color: $color-white;
-    background-color: $color-theme;
+  &.App-button-basic {
+    background-color: $color-white-semitransparent;
+    color: $color-theme;
+    border: 1px solid $color-gray;
+
+    &:hover {
+      border-color: $color-theme;
+      color: $color-white;
+      background-color: $color-theme;
+    }
   }
+
+  &.App-button-void {
+    background-color: transparent;
+    color: $color-theme;
+    border: 1px solid $color-theme;
+
+    &.App-button-light {
+      border-color: $color-white;
+      color: $color-white;
+    }
+
+    &:hover {
+      border-color: $color-theme;
+      color: $color-white;
+      background-color: $color-theme;
+    }
+  }
+
   &:active {
     opacity: 0.5;
   }

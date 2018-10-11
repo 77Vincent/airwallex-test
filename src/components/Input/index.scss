@@ -2,4 +2,15 @@
 
 .App-input {
   border: 1px solid $color-theme;
+  margin: 2em 0;
+  
+  input {
+    padding: 7px 10px;
+    border: none;
+    width: 100%;
+  }
+
+  &:hover {
+    border-color: $color-highlight;
+  }
 }
