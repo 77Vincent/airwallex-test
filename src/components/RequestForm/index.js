@@ -11,6 +11,7 @@ const mapStateToProps = state => ({
 class RequestForm extends Component {
 
   state = {
+    validating: false,
     fullname: '',
     email: '',
     confirmEmail: '',
@@ -26,6 +27,9 @@ class RequestForm extends Component {
 
   onSubmit = (e) => {
     e.preventDefault()
+    this.setState({
+      validating: true,
+    })
   }
 
   render() {
