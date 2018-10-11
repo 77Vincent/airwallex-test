@@ -1,23 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux'
 
 import { Modal, RequestForm, Button } from '../'
 import { toggleVisibility } from '../../actions/general'
 import store from '../../store'
 import './index.scss'
 
-const showRequestForm = () => {
-  store.dispatch(toggleVisibility(true))
+const mapStateToProps = state => ({
+  requestInviteForm: state.requestInviteForm,
+})
+
+const toggleRequesetForm = boolean => () => {
+  store.dispatch(toggleVisibility(boolean))
 }
 
 const BG_URL = 'http://www.androidguys.com/wp-content/uploads/2016/02/California-Mountain.jpg'
 
-export default (props) => {
+export default connect(mapStateToProps, {})((props) => {
   return (
     <div
       className="App-welcome App-full-height"
       style={{backgroundImage: `url(${BG_URL})`}}
     >
-      <Modal>
+      <Modal
+        visibility={props.requestInviteForm.requestFormDisplayed}
+        easyClose={toggleRequesetForm(false)}
+      >
         <RequestForm />
       </Modal>
 
@@ -28,11 +36,11 @@ export default (props) => {
 
         <Button
           className="App-welcome-request"
-          onClick={showRequestForm}
+          onClick={toggleRequesetForm(true)}
           type="void"
           light
         > Request an invite </Button>
       </div>
     </div>
   )
-}
+})

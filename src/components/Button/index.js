@@ -28,12 +28,12 @@ export default ({ light, type = 'basic', onClick, style, className, children, si
   }, style)
 
   return (
-    <div
+    <button
       className={`App-button ${buttonTypeClass} ${className} ${light ? 'App-button-light' : null}`}
       style={mergedStyle}
       onClick={onClick}
     >
       {children}
-    </div>
+    </button>
   )
 }

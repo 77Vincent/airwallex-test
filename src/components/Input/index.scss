@@ -1,13 +1,28 @@
 @import '../../base/var.scss';
 
 .App-input {
-  border: 1px solid $color-theme;
-  margin: 2em 0;
-  
-  input {
-    padding: 7px 10px;
-    border: none;
-    width: 100%;
+  margin: 0 0 0.5em;
+
+  .App-input-wrap {
+    border: 1px solid $color-theme;
+    
+    input {
+      padding: 7px 10px;
+      border: none;
+      width: 100%;
+    }
+  }
+
+  .App-input-alert {
+    font-size: 14px;
+    color: $color-alert;
+    opacity: 0;
+    @include transition(opacity, 0.5s);
+    height: 1em;
+  }
+
+  .App-input-alert-show {
+    opacity: 1;
   }
 
   &:hover {

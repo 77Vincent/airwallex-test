@@ -7,7 +7,7 @@ const initialState = {
   requestSent: false,
 }
 
-const requestInvite = (state = initialState, action) => {
+const requestInviteForm = (state = initialState, action) => {
   switch(action.type) {
     default:
       return state
@@ -25,7 +25,7 @@ const requestInvite = (state = initialState, action) => {
 }
 
 const rootReducer = combineReducers({
-  requestInvite,
+  requestInviteForm,
 })
 
 export default rootReducer

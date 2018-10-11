@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
 import { Input, Button } from '../'
@@ -8,18 +8,62 @@ const mapStateToProps = state => ({
 
 }) 
 
-export default connect(mapStateToProps, {})((props) => {
-  return (
-    <div className="App-request-form" >
-      <div className="App-text-subtitle"> Request an invite </div>
+class RequestForm extends Component {
 
-      <Input placeholder="Full name" />
+  state = {
+    fullname: '',
+    email: '',
+    confirmEmail: '',
+  }
 
-      <Input placeholder="Email" />
+  onChange = (e) => {
+    const field = e.target.name
 
-      <Input placeholder="Confirm email" />
+    this.setState({
+      [field]: e.target.value,
+    })
+  }
 
-      <Button size="s" className="App-request-form-send">Send</Button>
-    </div>
-  )
-})
+  onSubmit = (e) => {
+    e.preventDefault()
+  }
+
+  render() {
+    return (
+      <form className="App-request-form" onSubmit={this.onSubmit} ref="form">
+        <div className="App-text-subtitle"> Request an invite </div>
+
+        <Input
+          value={this.state.fullname}
+          require
+          name="fullname"
+          onChange={this.onChange}
+          placeholder="Full name"
+        />
+
+        <Input
+          value={this.state.email}
+          name="email"
+          onChange={this.onChange}
+          placeholder="Email"
+        />
+
+        <Input
+          value={this.state.confirmEmail}
+          name="confirmEmail"
+          onChange={this.onChange}
+          placeholder="Confirm email"
+        />
+
+        <Button
+          size="s"
+          className="App-request-form-send"
+        >
+          Send
+        </Button>
+      </form>
+    )
+  }
+}
+
+export default connect(mapStateToProps, {})(RequestForm)

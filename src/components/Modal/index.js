@@ -1,35 +1,28 @@
 import React from 'react';
-import { connect } from 'react-redux'
 
 import './index.scss'
 import { toggleVisibility } from '../../actions/general'
 import store from '../../store'
 
-const mapStateToProps = state => ({
-  requestInvite: state.requestInvite,
-})
-
 const APP_MODEL_CONTENT = 'App-modal-content'
 
-const clickToClose = (e) => {
+const clickToClose = callback => e => {
   const childElement = e.target.children[0]
-  if (childElement && childElement.className === APP_MODEL_CONTENT) {
-    store.dispatch(toggleVisibility(false))
+  if (callback && childElement && childElement.className === APP_MODEL_CONTENT) {
+    callback()
   }
 }
 
-export default connect(mapStateToProps, {})(
-  ({ requestInvite, children }) => {
-    return (
-      <div
-        className="App-modal"
-        style={{visibility: requestInvite.requestFormDisplayed ? 'visible' : 'hidden'}}
-        onClick={clickToClose}
-      >
-        <div className={APP_MODEL_CONTENT}>
-          {children}
-        </div>
+export default ({ children, easyClose, visibility }) => {
+  return (
+    <div
+      className="App-modal"
+      style={{visibility: visibility ? 'visible' : 'hidden'}}
+      onClick={clickToClose(easyClose)}
+    >
+      <div className={APP_MODEL_CONTENT}>
+        {children}
       </div>
-    )
-  }
-)
+    </div>
+  )
+}
