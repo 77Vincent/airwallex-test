@@ -2,7 +2,8 @@
 
 .App-header {
   position: relative;
-  background-color: $color-gray-dark;
+  z-index: 1;
+  background-color: $color-theme-semitransparent;
   height: 60px;
 
   .App-header-content {

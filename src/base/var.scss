@@ -1,6 +1,19 @@
 // Color
+$color-theme: #6a5f59;
+$color-theme-semitransparent: hsla(21, 9%, 38%, 0.616);
+
 $color-white: #fff;
 $color-gray: #aaa; 
-$color-gray-semitransparent: rgba(0, 0, 0, 0.5);
 $color-gray-dark: #777; 
 $color-black: #222;
+
+$color-black-semitransparent: rgba(0, 0, 0, 0.5);
+$color-white-semitransparent: rgba(255, 255, 255, 0.8);
+
+// Functions
+@mixin transition($type, $duration) {
+  transition: $type, $duration;
+  -o-transition: $type, $duration;
+  -moz-transition: $type, $duration;
+  -webkit-transition: $type, $duration;
+}

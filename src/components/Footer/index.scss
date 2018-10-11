@@ -6,6 +6,8 @@
   color: $color-white;
   align-items: center;
   text-align: center;
-  background-color: $color-gray-dark;
+  background-color: $color-theme-semitransparent;
   font-size: 0.9em;
+  z-index: 1;
+  position: relative;
 }

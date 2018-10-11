@@ -15,10 +15,13 @@
 
 // Text styles 
 .App-text-title {
-
+  line-height: 1.2;
+  font-size: 2em;
+  margin: 0.5em 0 1em
 }
 
 .App-text-subtitle {
+  line-height: 1.2;
   font-size: 1.5em;
   font-style: italic;
   font-weight: 700;
@@ -27,13 +30,16 @@
 }
 
 .App-text-body {
+  line-height: 1.2;
 
 }
 
 .App-text-body-2 {
+  line-height: 1.2;
 
 }
 
 .App-text-footnote {
+  line-height: 1.2;
 
 }

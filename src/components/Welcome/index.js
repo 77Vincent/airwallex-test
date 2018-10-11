@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Modal, RequestForm } from '../'
+import { Modal, RequestForm, Button } from '../'
 import { toggleVisibility } from '../../actions/general'
 import store from '../../store'
 import './index.scss'
@@ -22,11 +22,11 @@ export default (props) => {
       </Modal>
 
       <div className="App-welcome-content container">
-        <div className="App-welcome-slogan">A better way to enjoy every day.</div>
+        <div className="App-welcome-slogan">A better way <br /> to enjoy every day.</div>
 
-        <div>Be the first to know when we launch.</div>
+        <div className="App-text-title">Be the first to know when we launch.</div>
 
-        <button onClick={showRequestForm}>Request an invite</button>
+        <Button onClick={showRequestForm}> Request an invite </Button>
       </div>
     </div>
   )
