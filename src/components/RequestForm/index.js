@@ -8,6 +8,8 @@ import { Button, Form, Input } from 'antd'
 import './index.scss'
 import { Loading } from '../'
 import { sendRequest } from '../../actions/requestInvite'
+import { toggleVisibility } from '../../actions/general';
+import { TOGGLE_REQUEST_INVITE_FORM } from '../../actions/types';
 import store from '../../store';
 import { API_REQUEST_INVITE } from '../../constants'
 
@@ -44,6 +46,7 @@ class RequestForm extends React.Component {
                 isSuccessful: true,
                 message: data,
               }
+              store.dispatch(toggleVisibility(TOGGLE_REQUEST_INVITE_FORM, false))
             } else {
               payload = {
                 isSuccessful: false,
@@ -88,8 +91,8 @@ class RequestForm extends React.Component {
         <Form.Item>
           {
             getFieldDecorator('email', {
-              initialValue: 'usedemail@airwallex.com',
-              // initialValue: 'vincent@qq.com',
+              // initialValue: 'usedemail@airwallex.com',
+              initialValue: 'vincent@qq.com',
               rules: [
                 { required: true, message: 'Please input your email' },
                 { type: 'email', message: 'The input is not valid email!' },
@@ -101,8 +104,8 @@ class RequestForm extends React.Component {
         <Form.Item>
           {
             getFieldDecorator('confirmEmail', {
-              initialValue: 'usedemail@airwallex.com',
-              // initialValue: 'vincent@qq.com',
+              // initialValue: 'usedemail@airwallex.com',
+              initialValue: 'vincent@qq.com',
               rules: [
                 { required: true, message: 'Please confirm your email' },
                 { validator: this.confirmEmail },

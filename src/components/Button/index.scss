@@ -5,17 +5,18 @@
   cursor: pointer;
   font-style: italic;
   text-align: center;
-  @include transition(all, 0.3s);k
+  text-decoration: underline;
+  @include transition(all, 0.3s);
 
   &.App-button-basic {
-    background-color: $color-white-semitransparent;
-    color: $color-theme;
-    border: 1px solid $color-gray;
+    background-color: $color-theme;
+    border: 1px solid $color-theme;
+    color: $color-white;
 
     &:hover {
-      border-color: $color-theme;
-      color: $color-white;
-      background-color: $color-theme;
+      border-color: $color-white;
+      background-color: $color-white;
+      color: $color-theme;
     }
   }
 

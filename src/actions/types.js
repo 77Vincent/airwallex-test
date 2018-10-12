@@ -1,2 +1,4 @@
-export const CREATE = 'CREATE'
-export const TOGGLE = 'TOGGLE'
+// Request invite related actions
+export const REQUEST_INVITE = 'REQUEST_INVITE'
+export const RESET_REGISTRATION_STATUS = 'RESET_REGISTRATION_STATUS'
+export const TOGGLE_REQUEST_INVITE_FORM = 'TOGGLE_REQUEST_INVITE_FORM'

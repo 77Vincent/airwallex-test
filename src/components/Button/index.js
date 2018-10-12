@@ -10,7 +10,7 @@ const Button = ({
   onClick = () => {},
   style = {},
   className = '',
-  size = 'l'
+  size = 'm'
 }) => {
   const fontSize = {
     s: '0.9em',
@@ -29,7 +29,7 @@ const Button = ({
     void: 'App-button-void',
   }
 
-  const buttonTypeClass = buttonType[type] ? buttonType[type] : null
+  const buttonTypeClass = buttonType[type] ? buttonType[type] : '' 
 
   const mergedStyle = Object.assign({
     fontSize: fontSize[size],
@@ -38,7 +38,7 @@ const Button = ({
 
   return (
     <button
-      className={`App-button ${buttonTypeClass} ${className} ${light ? 'App-button-light' : null}`}
+      className={`App-button ${buttonTypeClass} ${className} ${light ? 'App-button-light' : ''}`}
       style={mergedStyle}
       onClick={onClick}
     >
