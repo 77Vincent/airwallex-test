@@ -6,8 +6,8 @@ import { Button, Form, Input } from 'antd'
 import './index.scss'
 import { sendRequest } from '../../actions/requestInvite';
 import store from '../../store';
+import { API_REQUEST_INVITE } from '../../constants';
 
-const API_REQUEST_INVITE = 'https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com/prod/fake-auth'
 
 const mapStateToProps = state => ({
 
@@ -29,7 +29,20 @@ class RequestForm extends React.Component {
         })
           .then(res => res.json())
           .then(data => {
-            store.dispatch(sendRequest(data))
+            let payload = null
+
+            if (data === 'Registered') {
+              payload = {
+                isSuccessful: true,
+                message: data,
+              }
+            } else {
+              payload = {
+                isSuccessful: false,
+                message: data.errorMessage
+              }
+            }
+            store.dispatch(sendRequest(payload))
           })
       }
     })
@@ -64,7 +77,8 @@ class RequestForm extends React.Component {
         <Form.Item>
           {
             getFieldDecorator('email', {
-              initialValue: 'vincent@qq.com',
+              initialValue: 'usedemail@airwallex.com',
+              // initialValue: 'vincent@qq.com',
               rules: [
                 { required: true, message: 'Please input your email' },
                 { type: 'email', message: 'The input is not valid email!' },
@@ -76,7 +90,8 @@ class RequestForm extends React.Component {
         <Form.Item>
           {
             getFieldDecorator('confirmEmail', {
-              initialValue: 'vincent@qq.com',
+              initialValue: 'usedemail@airwallex.com',
+              // initialValue: 'vincent@qq.com',
               rules: [
                 { required: true, message: 'Please confirm your email' },
                 { validator: this.confirmEmail },

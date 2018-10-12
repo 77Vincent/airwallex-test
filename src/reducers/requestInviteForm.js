@@ -2,7 +2,8 @@ import { TOGGLE, CREATE } from '../actions/types'
 
 const initialState = {
   isRequestFormDisplayed: true,
-  isRegistered: false,
+  isSuccessful: false,
+  message: '',
 }
 
 export default (state = initialState, action) => {
@@ -10,17 +11,8 @@ export default (state = initialState, action) => {
     default:
       return state
     case CREATE:
-      if (action.payload === 'Registered') {
-        return {
-          ...state,
-          isRegistered: true,
-        }
-      } else {
-        return {
-          ...state,
-          isRegistered: false,
-        }
-      }
+      const { isSuccessful, message } = action.payload
+      return { ...state, isSuccessful, message }
     case TOGGLE:
       return {
         ...state,
