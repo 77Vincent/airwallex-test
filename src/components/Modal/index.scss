@@ -14,6 +14,7 @@
   justify-content: center;
 
   .App-modal-content {
+    position: relative;
     padding: 48px 21px;
     background-color: $color-white;
     box-shadow: 0 0 20px 0 $color-gray-dark;

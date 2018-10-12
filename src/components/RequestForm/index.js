@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Button, Form, Input } from 'antd'
 
 import './index.scss'
+import { Loading } from '../'
 import { sendRequest } from '../../actions/requestInvite';
 import store from '../../store';
 import { API_REQUEST_INVITE } from '../../constants';
@@ -14,10 +15,15 @@ const mapStateToProps = state => ({
 }) 
 
 class RequestForm extends React.Component {
+  state = {
+    isLoading: false,
+  }
+
   onSubmit = (e) => {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
+        this.setState({ isLoading: true })
         const { fullname, email } = values
 
         fetch(API_REQUEST_INVITE, {
@@ -43,6 +49,7 @@ class RequestForm extends React.Component {
               }
             }
             store.dispatch(sendRequest(payload))
+            this.setState({ isLoading: false })
           })
       }
     })
@@ -63,6 +70,8 @@ class RequestForm extends React.Component {
 
     return (
       <Form className="App-request-form" onSubmit={this.onSubmit}>
+        <Loading loading={this.state.isLoading} />
+
         <div className="App-text-subtitle"> Request an invite </div>
 
         <Form.Item>
