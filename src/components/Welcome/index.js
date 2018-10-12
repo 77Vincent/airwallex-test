@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
+import BACKGROUND_IMAGE from '../../assets/images/California-Mountain.jpg'
 import { Modal, RequestForm, Button } from '../'
 import { toggleVisibility } from '../../actions/general'
 import store from '../../store'
@@ -14,13 +15,11 @@ const toggleRequesetForm = boolean => () => {
   store.dispatch(toggleVisibility(boolean))
 }
 
-const BG_URL = 'http://www.androidguys.com/wp-content/uploads/2016/02/California-Mountain.jpg'
-
 export default connect(mapStateToProps, {})((props) => {
   return (
     <div
       className="App-welcome App-full-height"
-      style={{backgroundImage: `url(${BG_URL})`}}
+      style={{backgroundImage: `url(${BACKGROUND_IMAGE})`}}
     >
       <Modal
         style={{maxWidth: '390px'}}

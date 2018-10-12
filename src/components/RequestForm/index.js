@@ -1,13 +1,15 @@
-import React from 'react';
+import React from 'react'
 import fetch from 'cross-fetch'
 import { connect } from 'react-redux'
 import { Button, Form, Input } from 'antd'
+// Using the ant design lib for the form
+// For documentation: https://ant.design/index-cn
 
 import './index.scss'
 import { Loading } from '../'
-import { sendRequest } from '../../actions/requestInvite';
+import { sendRequest } from '../../actions/requestInvite'
 import store from '../../store';
-import { API_REQUEST_INVITE } from '../../constants';
+import { API_REQUEST_INVITE } from '../../constants'
 
 
 const mapStateToProps = state => ({

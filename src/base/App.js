@@ -8,7 +8,7 @@ import { Provider } from 'react-redux'
 import { Header, Footer, Welcome } from '../components'
 import './App.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.css'
 
 class App extends Component {
   render() {
