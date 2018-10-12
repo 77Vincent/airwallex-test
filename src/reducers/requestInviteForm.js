@@ -1,7 +1,7 @@
 import { TOGGLE, CREATE } from '../actions/types'
 
 const initialState = {
-  isRequestFormDisplayed: true,
+  isRequestFormDisplayed: false,
   isSuccessful: false,
   message: '',
 }

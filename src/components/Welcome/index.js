@@ -23,7 +23,7 @@ export default connect(mapStateToProps, {})((props) => {
       style={{backgroundImage: `url(${BG_URL})`}}
     >
       <Modal
-        width={390}
+        style={{maxWidth: '390px'}}
         visibility={props.requestInviteForm.isRequestFormDisplayed}
         easyClose={toggleRequesetForm(false)}
       >
