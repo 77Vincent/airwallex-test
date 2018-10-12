@@ -1,8 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 import './index.scss'
 
-export default ({ light, type = 'basic', onClick, style, className, children, size = 'l'}) => {
+const Button = ({
+  children,
+  light = false,
+  type = 'basic',
+  onClick = () => {},
+  style = {},
+  className = '',
+  size = 'l'
+}) => {
   const fontSize = {
     s: '0.9em',
     m: '1.2em',
@@ -37,3 +46,14 @@ export default ({ light, type = 'basic', onClick, style, className, children, si
     </button>
   )
 }
+
+Button.propTypes = {
+  light: PropTypes.bool,
+  type: PropTypes.string,
+  className: PropTypes.string,
+  size: PropTypes.string, 
+  style: PropTypes.object,
+  onClick: PropTypes.func, 
+}
+
+export default Button

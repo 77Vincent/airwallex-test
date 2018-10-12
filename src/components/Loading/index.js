@@ -1,9 +1,10 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import './index.scss'
-import { Spin } from 'antd';
+import { Spin } from 'antd'
 
-export default ({ loading }) => (
+const Loading = ({ loading = true }) => (
   <div
     className="App-loading"
     style={{visibility: loading ? 'visible' : 'hidden'}}
@@ -11,3 +12,9 @@ export default ({ loading }) => (
     <Spin />
   </div>
 )
+
+Loading.propTypes = {
+  loading: PropTypes.bool,
+}
+
+export default Loading
