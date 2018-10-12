@@ -23,6 +23,7 @@ export default connect(mapStateToProps, {})((props) => {
       style={{backgroundImage: `url(${BG_URL})`}}
     >
       <Modal
+        width={390}
         visibility={props.requestInviteForm.requestFormDisplayed}
         easyClose={toggleRequesetForm(false)}
       >
@@ -39,7 +40,9 @@ export default connect(mapStateToProps, {})((props) => {
           onClick={toggleRequesetForm(true)}
           type="void"
           light
-        > Request an invite </Button>
+        >
+          Request an invite
+        </Button>
       </div>
     </div>
   )

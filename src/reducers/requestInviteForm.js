@@ -3,6 +3,11 @@ import { PUT, TOGGLE } from '../actions/types'
 const initialState = {
   requestFormDisplayed: true,
   requestSent: false,
+  requestForm: {
+    fullname: '',
+    email: '',
+    confirmEmail: '',
+  }
 }
 
 export default (state = initialState, action) => {

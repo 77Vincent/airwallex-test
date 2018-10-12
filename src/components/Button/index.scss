@@ -5,6 +5,7 @@
   cursor: pointer;
   font-style: italic;
   text-align: center;
+  @include transition(all, 0.3s);k
 
   &.App-button-basic {
     background-color: $color-white-semitransparent;

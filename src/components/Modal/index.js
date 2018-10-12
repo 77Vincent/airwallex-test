@@ -1,8 +1,6 @@
 import React from 'react';
 
 import './index.scss'
-import { toggleVisibility } from '../../actions/general'
-import store from '../../store'
 
 const APP_MODEL_CONTENT = 'App-modal-content'
 
@@ -13,14 +11,21 @@ const clickToClose = callback => e => {
   }
 }
 
-export default ({ children, easyClose, visibility }) => {
+export default ({ children, easyClose, visibility, width }) => {
   return (
     <div
       className="App-modal"
-      style={{visibility: visibility ? 'visible' : 'hidden'}}
+      style={{
+        display: visibility ? 'flex' : 'none',
+      }}
       onClick={clickToClose(easyClose)}
     >
-      <div className={APP_MODEL_CONTENT}>
+      <div
+        className={APP_MODEL_CONTENT}
+        style={{
+          width: `${width}px`,
+        }}
+      >
         {children}
       </div>
     </div>

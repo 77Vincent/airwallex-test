@@ -1,73 +1,76 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
+import { Button, Form, Input } from 'antd'
 
-import { Input, Button } from '../'
 import './index.scss'
 
 const mapStateToProps = state => ({
 
 }) 
 
-class RequestForm extends Component {
-
-  state = {
-    validating: false,
-    fullname: '',
-    email: '',
-    confirmEmail: '',
-  }
-
-  onChange = (e) => {
-    const field = e.target.name
-
-    this.setState({
-      [field]: e.target.value,
-    })
-  }
-
+class RequestForm extends React.Component {
   onSubmit = (e) => {
     e.preventDefault()
-    this.setState({
-      validating: true,
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log(values)
+      }
     })
+  }
+
+  confirmEmail = (rule, value, callback) => {
+    const { form } = this.props
+
+    if (value && value !== form.getFieldValue('email')) {
+      callback('The two emails you entered are inconsistent!');
+    } else {
+      callback();
+    }
   }
 
   render() {
+    const { getFieldDecorator } = this.props.form
+
     return (
-      <form className="App-request-form" onSubmit={this.onSubmit} ref="form">
+      <Form className="App-request-form" onSubmit={this.onSubmit}>
         <div className="App-text-subtitle"> Request an invite </div>
 
-        <Input
-          value={this.state.fullname}
-          require
-          name="fullname"
-          onChange={this.onChange}
-          placeholder="Full name"
-        />
+        <Form.Item>
+          {
+            getFieldDecorator('fullname', {
+              rules: [{ required: true, message: 'Please input your fullname' }],
+            })( <Input placeholder="Full name"/>)
+          }
+        </Form.Item>
 
-        <Input
-          value={this.state.email}
-          name="email"
-          onChange={this.onChange}
-          placeholder="Email"
-        />
+        <Form.Item>
+          {
+            getFieldDecorator('email', {
+              rules: [
+                { required: true, message: 'Please input your email' },
+                { type: 'email', message: 'The input is not valid email!' },
+              ],
+            })( <Input placeholder="Email"/>)
+          }
+        </Form.Item>
 
-        <Input
-          value={this.state.confirmEmail}
-          name="confirmEmail"
-          onChange={this.onChange}
-          placeholder="Confirm email"
-        />
+        <Form.Item>
+          {
+            getFieldDecorator('confirmEmail', {
+              rules: [
+                { required: true, message: 'Please confirm your email' },
+                { validator: this.confirmEmail },
+              ],
+            })( <Input placeholder="Confirm email"/>)
+          }
+        </Form.Item>
 
-        <Button
-          size="s"
-          className="App-request-form-send"
-        >
-          Send
-        </Button>
-      </form>
+        <Button htmlType="submit" className="App-request-form-send"> Send </Button>
+      </Form>
     )
   }
 }
 
-export default connect(mapStateToProps, {})(RequestForm)
+const DecoratedForm = Form.create()(RequestForm)
+
+export default connect(mapStateToProps, {})(DecoratedForm)
