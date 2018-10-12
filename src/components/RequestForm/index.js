@@ -1,8 +1,13 @@
 import React from 'react';
+import fetch from 'cross-fetch'
 import { connect } from 'react-redux'
 import { Button, Form, Input } from 'antd'
 
 import './index.scss'
+import { sendRequest } from '../../actions/requestInvite';
+import store from '../../store';
+
+const API_REQUEST_INVITE = 'https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com/prod/fake-auth'
 
 const mapStateToProps = state => ({
 
@@ -13,7 +18,19 @@ class RequestForm extends React.Component {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log(values)
+        const { fullname, email } = values
+
+        fetch(API_REQUEST_INVITE, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name: fullname, email }),
+        })
+          .then(res => res.json())
+          .then(data => {
+            store.dispatch(sendRequest(data))
+          })
       }
     })
   }
@@ -38,30 +55,33 @@ class RequestForm extends React.Component {
         <Form.Item>
           {
             getFieldDecorator('fullname', {
+              initialValue: 'vincent',
               rules: [{ required: true, message: 'Please input your fullname' }],
-            })( <Input placeholder="Full name"/>)
+            })(<Input placeholder="Full name"/>)
           }
         </Form.Item>
 
         <Form.Item>
           {
             getFieldDecorator('email', {
+              initialValue: 'vincent@qq.com',
               rules: [
                 { required: true, message: 'Please input your email' },
                 { type: 'email', message: 'The input is not valid email!' },
               ],
-            })( <Input placeholder="Email"/>)
+            })(<Input placeholder="Email"/>)
           }
         </Form.Item>
 
         <Form.Item>
           {
             getFieldDecorator('confirmEmail', {
+              initialValue: 'vincent@qq.com',
               rules: [
                 { required: true, message: 'Please confirm your email' },
                 { validator: this.confirmEmail },
               ],
-            })( <Input placeholder="Confirm email"/>)
+            })(<Input placeholder="Confirm email"/>)
           }
         </Form.Item>
 

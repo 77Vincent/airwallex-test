@@ -1,2 +1,2 @@
-export const PUT = 'PUT'
+export const CREATE = 'CREATE'
 export const TOGGLE = 'TOGGLE'

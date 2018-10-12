@@ -1,28 +1,30 @@
-import { PUT, TOGGLE } from '../actions/types'
+import { TOGGLE, CREATE } from '../actions/types'
 
 const initialState = {
-  requestFormDisplayed: true,
-  requestSent: false,
-  requestForm: {
-    fullname: '',
-    email: '',
-    confirmEmail: '',
-  }
+  isRequestFormDisplayed: true,
+  isRegistered: false,
 }
 
 export default (state = initialState, action) => {
   switch(action.type) {
     default:
       return state
-    case PUT:
-      return {
-        ...state,
-        requestSent: action.payload,
+    case CREATE:
+      if (action.payload === 'Registered') {
+        return {
+          ...state,
+          isRegistered: true,
+        }
+      } else {
+        return {
+          ...state,
+          isRegistered: false,
+        }
       }
     case TOGGLE:
       return {
         ...state,
-        requestFormDisplayed: action.payload,
+        isRequestFormDisplayed: action.payload,
       } 
   }
 }

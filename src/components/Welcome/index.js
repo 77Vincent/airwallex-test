@@ -24,7 +24,7 @@ export default connect(mapStateToProps, {})((props) => {
     >
       <Modal
         width={390}
-        visibility={props.requestInviteForm.requestFormDisplayed}
+        visibility={props.requestInviteForm.isRequestFormDisplayed}
         easyClose={toggleRequesetForm(false)}
       >
         <RequestForm />
