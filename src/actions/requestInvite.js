@@ -1,15 +1,15 @@
-import { REQUEST_INVITE, RESET_REGISTRATION_STATUS } from './types'
+import { SET_REGISTRATION_STATUS, RESET_REGISTRATION_STATUS } from './types'
 
-export const sendRequest = (payload = {}) => dispatch => {
+export const setRegistrationStatus = (payload = {}) => dispatch => {
   dispatch({
-    type: REQUEST_INVITE,
+    type: SET_REGISTRATION_STATUS,
     payload,
   })
 }
 
-export const setRegistrationStatus = (boolean = false) => dispatch => {
+export const resetRegistrationStatus = () => dispatch => {
   dispatch({
     type: RESET_REGISTRATION_STATUS,
-    payload: boolean,
+    payload: null,
   })
 }

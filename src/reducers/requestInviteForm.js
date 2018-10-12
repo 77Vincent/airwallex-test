@@ -1,27 +1,46 @@
-import { TOGGLE_REQUEST_INVITE_FORM, REQUEST_INVITE, RESET_REGISTRATION_STATUS } from '../actions/types'
+import {
+  TOGGLE_REQUEST_INVITE_FORM_VISIBILITY,
+  TOGGLE_REQUEST_SENDING_STATUS,
+  SET_REGISTRATION_STATUS,
+  RESET_REGISTRATION_STATUS,
+} from '../actions/types'
+
+const initialRegistrationStatus = {
+  isRegistered: false,
+  isError: false,
+  message: '',
+}
 
 const initialState = {
-  isRequestFormDisplayed: false,
-  isSuccessful: false,
-  message: '',
+  isRequestInviteFormVisible: false,
+  isRequestPending: false,
+  registrationStatus: initialRegistrationStatus,
 }
 
 export default (state = initialState, action) => {
   switch(action.type) {
     default:
       return state
+    case TOGGLE_REQUEST_SENDING_STATUS:
+      return {
+        ...state,
+        isRequestPending: action.payload,
+      }
+    case TOGGLE_REQUEST_INVITE_FORM_VISIBILITY:
+      return {
+        ...state,
+        isRequestInviteFormVisible: action.payload,
+      } 
     case RESET_REGISTRATION_STATUS:
       return {
         ...state,
-        isSuccessful: action.payload,
+        registrationStatus: initialRegistrationStatus,
       }
-    case REQUEST_INVITE:
-      const { isSuccessful, message } = action.payload
-      return { ...state, isSuccessful, message }
-    case TOGGLE_REQUEST_INVITE_FORM:
+    case SET_REGISTRATION_STATUS:
+      const { isRegistered, isError, message } = action.payload
       return {
         ...state,
-        isRequestFormDisplayed: action.payload,
-      } 
+        registrationStatus: { isRegistered, isError, message }
+      }
   }
 }

@@ -1,3 +1,5 @@
+@import '../../base/var.scss';
+
 .App-request-form {
 
   .App-text-subtitle {
@@ -7,5 +9,11 @@
 
   .App-request-form-send {
     width: 100%;
+  }
+
+  .App-request-form-failed {
+    margin-top: 1em;
+    text-align: center;
+    color: $color-alert;
   }
 }

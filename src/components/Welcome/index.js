@@ -1,28 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-import { TOGGLE_REQUEST_INVITE_FORM } from '../../actions/types'
+import { TOGGLE_REQUEST_INVITE_FORM_VISIBILITY } from '../../actions/types'
 import BACKGROUND_IMAGE from '../../assets/images/California-Mountain.jpg'
 import { Modal, RequestForm, Button } from '../'
-import { toggleVisibility } from '../../actions/general'
-import { setRegistrationStatus } from '../../actions/requestInvite';
+import { toggleStatus } from '../../actions/general'
 import store from '../../store'
 import './index.scss'
+import { resetRegistrationStatus } from '../../actions/requestInvite';
 
 const mapStateToProps = state => ({
   requestInviteForm: state.requestInviteForm,
 })
 
 const toggleRequesetForm = boolean => () => {
-  store.dispatch(toggleVisibility(TOGGLE_REQUEST_INVITE_FORM, boolean))
+  store.dispatch(toggleStatus(TOGGLE_REQUEST_INVITE_FORM_VISIBILITY, boolean))
 }
 
-const toggleRegistrationStatus = boolean => () => {
-  store.dispatch(setRegistrationStatus(boolean))
+const clearRegistrationStatus = () => () => {
+  store.dispatch(resetRegistrationStatus())
 }
 
 export default connect(mapStateToProps, {})(({ requestInviteForm }) => {
-  const { isSuccessful, isRequestFormDisplayed } = requestInviteForm
+  const { registrationStatus, isRequestInviteFormVisible } = requestInviteForm
   return (
     <div
       className="App-welcome App-full-height"
@@ -30,8 +30,8 @@ export default connect(mapStateToProps, {})(({ requestInviteForm }) => {
     >
       <Modal
         style={{maxWidth: '480px'}}
-        visibility={isSuccessful}
-        easyClose={toggleRegistrationStatus(false)}
+        visibility={registrationStatus.isRegistered}
+        easyClose={clearRegistrationStatus(false)}
       >
         <div className="App-request-sent">
           <div className="App-text-subtitle">
@@ -39,7 +39,7 @@ export default connect(mapStateToProps, {})(({ requestInviteForm }) => {
             we are looking forward to seeing you soon!
           </div>
           <Button
-            onClick={toggleRegistrationStatus(false)}
+            onClick={clearRegistrationStatus(false)}
             type="void"
             size="m"
           >
@@ -50,7 +50,7 @@ export default connect(mapStateToProps, {})(({ requestInviteForm }) => {
 
       <Modal
         style={{maxWidth: '390px'}}
-        visibility={isRequestFormDisplayed}
+        visibility={isRequestInviteFormVisible}
         easyClose={toggleRequesetForm(false)}
       >
         <RequestForm />

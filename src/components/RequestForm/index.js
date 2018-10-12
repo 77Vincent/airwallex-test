@@ -7,27 +7,23 @@ import { Button, Form, Input } from 'antd'
 
 import './index.scss'
 import { Loading } from '../'
-import { sendRequest } from '../../actions/requestInvite'
-import { toggleVisibility } from '../../actions/general';
-import { TOGGLE_REQUEST_INVITE_FORM } from '../../actions/types';
-import store from '../../store';
+import { setRegistrationStatus } from '../../actions/requestInvite'
+import { toggleStatus } from '../../actions/general';
+import { TOGGLE_REQUEST_INVITE_FORM_VISIBILITY, TOGGLE_REQUEST_SENDING_STATUS } from '../../actions/types';
 import { API_REQUEST_INVITE } from '../../constants'
+import store from '../../store';
 
 
 const mapStateToProps = state => ({
-
+  requestInviteForm: state.requestInviteForm,
 }) 
 
 class RequestForm extends React.Component {
-  state = {
-    isLoading: false,
-  }
-
   onSubmit = (e) => {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        this.setState({ isLoading: true })
+        store.dispatch(toggleStatus(TOGGLE_REQUEST_SENDING_STATUS, true))
         const { fullname, email } = values
 
         fetch(API_REQUEST_INVITE, {
@@ -43,18 +39,21 @@ class RequestForm extends React.Component {
 
             if (data === 'Registered') {
               payload = {
-                isSuccessful: true,
+                isRegistered: true,
+                isError: false,
                 message: data,
               }
-              store.dispatch(toggleVisibility(TOGGLE_REQUEST_INVITE_FORM, false))
+              store.dispatch(toggleStatus(TOGGLE_REQUEST_INVITE_FORM_VISIBILITY, false))
             } else {
               payload = {
-                isSuccessful: false,
+                isRegistered: false,
+                isError: true,
                 message: data.errorMessage
               }
             }
-            store.dispatch(sendRequest(payload))
-            this.setState({ isLoading: false })
+
+            store.dispatch(setRegistrationStatus(payload))
+            store.dispatch(toggleStatus(TOGGLE_REQUEST_SENDING_STATUS, false))
           })
       }
     })
@@ -72,10 +71,11 @@ class RequestForm extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form
+    const { requestInviteForm } = this.props
 
     return (
       <Form className="App-request-form" onSubmit={this.onSubmit}>
-        <Loading loading={this.state.isLoading} />
+        <Loading loading={requestInviteForm.isRequestPending} />
 
         <div className="App-text-subtitle"> Request an invite </div>
 
@@ -91,8 +91,7 @@ class RequestForm extends React.Component {
         <Form.Item>
           {
             getFieldDecorator('email', {
-              // initialValue: 'usedemail@airwallex.com',
-              initialValue: 'vincent@qq.com',
+              initialValue: 'usedemail@airwallex.com',
               rules: [
                 { required: true, message: 'Please input your email' },
                 { type: 'email', message: 'The input is not valid email!' },
@@ -104,8 +103,7 @@ class RequestForm extends React.Component {
         <Form.Item>
           {
             getFieldDecorator('confirmEmail', {
-              // initialValue: 'usedemail@airwallex.com',
-              initialValue: 'vincent@qq.com',
+              initialValue: 'usedemail@airwallex.com',
               rules: [
                 { required: true, message: 'Please confirm your email' },
                 { validator: this.confirmEmail },
@@ -115,6 +113,13 @@ class RequestForm extends React.Component {
         </Form.Item>
 
         <Button htmlType="submit" className="App-request-form-send"> Send </Button>
+
+        <div
+          className="App-request-form-failed"
+          style={{ visibility: requestInviteForm.registrationStatus.isError ? 'visible' : 'hidden' }}
+        >
+          {requestInviteForm.registrationStatus.message}
+        </div>
       </Form>
     )
   }
