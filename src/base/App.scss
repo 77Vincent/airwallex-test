@@ -1,4 +1,5 @@
 @import './var.scss';
+@import '~bootstrap/scss/bootstrap.scss';
 
 .App {
   position: relative;
@@ -17,7 +18,11 @@
 .App-text-title {
   line-height: 1.2;
   font-size: 2em;
-  margin: 0.5em 0 1em
+  margin: 0.5em 0 1em;
+
+  @include media-breakpoint-down(sm) {
+    font-size: 1.5em;
+  }
 }
 
 .App-text-subtitle {
@@ -27,6 +32,10 @@
   font-weight: 700;
   color: $color-gray-dark;
   margin: 0.5em 0 1em;
+
+  @include media-breakpoint-down(sm) {
+    font-size: 1.3em;
+  }
 }
 
 .App-text-body {

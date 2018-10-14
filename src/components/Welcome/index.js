@@ -36,7 +36,7 @@ export default connect(mapStateToProps, {})(({ requestInviteForm }) => {
         <div className="App-request-sent">
           <div className="App-text-subtitle">
             Your request has been sent.<br />
-            we are looking forward to seeing you soon!
+            We are looking forward to seeing you soon!
           </div>
           <Button
             onClick={clearRegistrationStatus(false)}

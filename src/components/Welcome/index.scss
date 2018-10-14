@@ -1,4 +1,5 @@
 @import '../../base/var.scss';
+@import '~bootstrap/scss/bootstrap.scss';
 
 .App-welcome {
   display: flex;
@@ -35,6 +36,10 @@
       font-size: 5em;
       margin: 0.5em auto;
       line-height: 1.2;
+
+      @include media-breakpoint-down(sm) {
+        font-size: 3em;
+      }
     }
 
     .App-text-title {
