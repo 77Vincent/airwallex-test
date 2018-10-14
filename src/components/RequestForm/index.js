@@ -82,7 +82,6 @@ class RequestForm extends React.Component {
         <Form.Item>
           {
             getFieldDecorator('fullname', {
-              initialValue: 'vincent',
               rules: [{ required: true, message: 'Please input your fullname' }],
             })(<Input placeholder="Full name"/>)
           }
@@ -91,7 +90,6 @@ class RequestForm extends React.Component {
         <Form.Item>
           {
             getFieldDecorator('email', {
-              initialValue: 'usedemail@airwallex.com',
               rules: [
                 { required: true, message: 'Please input your email' },
                 { type: 'email', message: 'The input is not valid email!' },
@@ -103,7 +101,6 @@ class RequestForm extends React.Component {
         <Form.Item>
           {
             getFieldDecorator('confirmEmail', {
-              initialValue: 'usedemail@airwallex.com',
               rules: [
                 { required: true, message: 'Please confirm your email' },
                 { validator: this.confirmEmail },
