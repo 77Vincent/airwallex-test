@@ -26,6 +26,8 @@ class RequestForm extends React.Component {
         store.dispatch(toggleStatus(TOGGLE_REQUEST_SENDING_STATUS, true))
         const { fullname, email } = values
 
+        let payload = null
+
         fetch(API_REQUEST_INVITE, {
           method: 'POST',
           headers: {
@@ -35,7 +37,6 @@ class RequestForm extends React.Component {
         })
           .then(res => res.json())
           .then(data => {
-            let payload = null
 
             if (data === 'Registered') {
               payload = {
@@ -52,6 +53,15 @@ class RequestForm extends React.Component {
               }
             }
 
+            store.dispatch(setRegistrationStatus(payload))
+            store.dispatch(toggleStatus(TOGGLE_REQUEST_SENDING_STATUS, false))
+          })
+          .catch(error => {
+            payload = {
+              isRegistered: false,
+              isError: true,
+              message: 'Please try later',
+            }
             store.dispatch(setRegistrationStatus(payload))
             store.dispatch(toggleStatus(TOGGLE_REQUEST_SENDING_STATUS, false))
           })
