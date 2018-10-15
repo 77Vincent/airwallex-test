@@ -63,9 +63,10 @@ class RequestForm extends React.Component {
     const { form } = this.props
 
     if (value && value !== form.getFieldValue('email')) {
-      callback('The two emails you entered are inconsistent!');
+      callback('The two emails you entered are inconsistent!')
     } else {
-      callback();
+      // According to the documentation, this callback must be invoked
+      callback()
     }
   }
 
@@ -82,7 +83,10 @@ class RequestForm extends React.Component {
         <Form.Item>
           {
             getFieldDecorator('fullname', {
-              rules: [{ required: true, message: 'Please input your fullname' }],
+              rules: [
+                { required: true, message: 'Please input your fullname.' },
+                { min: 3, message: 'Name should be at least 3 characters.' },
+              ],
             })(<Input placeholder="Full name"/>)
           }
         </Form.Item>
@@ -91,7 +95,7 @@ class RequestForm extends React.Component {
           {
             getFieldDecorator('email', {
               rules: [
-                { required: true, message: 'Please input your email' },
+                { required: true, message: 'Please input your email.' },
                 { type: 'email', message: 'The input is not valid email!' },
               ],
             })(<Input placeholder="Email"/>)
@@ -102,7 +106,7 @@ class RequestForm extends React.Component {
           {
             getFieldDecorator('confirmEmail', {
               rules: [
-                { required: true, message: 'Please confirm your email' },
+                { required: true, message: 'Please confirm your email.' },
                 { validator: this.confirmEmail },
               ],
             })(<Input placeholder="Confirm email"/>)

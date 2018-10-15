@@ -31,7 +31,7 @@ export default connect(mapStateToProps, {})(({ requestInviteForm }) => {
       <Modal
         style={{maxWidth: '480px'}}
         visibility={registrationStatus.isRegistered}
-        easyClose={clearRegistrationStatus(false)}
+        close={clearRegistrationStatus(false)}
       >
         <div className="App-request-sent">
           <div className="App-text-subtitle">
@@ -51,7 +51,7 @@ export default connect(mapStateToProps, {})(({ requestInviteForm }) => {
       <Modal
         style={{maxWidth: '390px'}}
         visibility={isRequestInviteFormVisible}
-        easyClose={toggleRequesetForm(false)}
+        close={toggleRequesetForm(false)}
       >
         <RequestForm />
       </Modal>

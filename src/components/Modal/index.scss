@@ -13,6 +13,19 @@
   align-items: center;
   justify-content: center;
 
+  .App-modal-dismiss {
+    position: absolute;
+    right: 7px;
+    top: 10px;
+    opacity: 0.6;
+    cursor: pointer;
+    @include transition(opacity, 0.2s);
+
+    &:hover {
+      opacity: 0.3;
+    }
+  }
+
   .App-modal-content {
     position: relative;
     padding: 48px 21px;

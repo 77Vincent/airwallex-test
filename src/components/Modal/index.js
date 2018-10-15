@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
+import { Icon } from 'antd'
 import './index.scss'
 
 const APP_MODEL_CONTENT = 'App-modal-content'
@@ -19,7 +20,7 @@ const clickToClose = callback => e => {
 
 const Modal = ({
   children,
-  easyClose = () => {},
+  close = () => {},
   visibility = true,
   style = {}
 }) => {
@@ -27,12 +28,13 @@ const Modal = ({
     <div
       className="App-modal"
       style={{ display: visibility ? 'flex' : 'none' }}
-      onClick={clickToClose(easyClose)}
+      onClick={clickToClose(close)}
     >
       <div
         className={APP_MODEL_CONTENT}
         style={style}
       >
+        <Icon onClick={close} className="App-modal-dismiss" type="close-circle"/>
         {children}
       </div>
     </div>
@@ -40,7 +42,7 @@ const Modal = ({
 }
 
 Modal.propTypes = {
-  easyClose: PropTypes.func,
+  close: PropTypes.func,
   visibility: PropTypes.bool,
   style: PropTypes.object,
 }
