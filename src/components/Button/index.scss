@@ -1,46 +1,53 @@
 @import '../../base/var.scss';
+@import '~bootstrap/scss/bootstrap.scss';
 
 .App-button {
-  display: inline-block;
-  cursor: pointer;
-  font-style: italic;
-  text-align: center;
-  text-decoration: underline;
-  @include transition(all, 0.3s);
-
-  &.App-button-basic {
-    background-color: $color-theme;
-    border: 1px solid $color-theme;
-    color: $color-white;
-
-    &:hover {
-      border-color: $color-white;
-      background-color: $color-white;
-      color: $color-theme;
-    }
+  @include media-breakpoint-down(sm) {
+    font-size: 0.8em;
   }
 
-  &.App-button-void {
-    background-color: transparent;
-    color: $color-theme;
-    border: 1px solid $color-theme;
+  button {
+    cursor: pointer;
+    display: inline-block;
+    font-style: italic;
+    text-align: center;
+    text-decoration: underline;
+    @include transition(all, 0.3s);
 
-    &.App-button-light {
-      border-color: $color-white;
-      color: $color-white;
-    }
-
-    &:hover {
-      border-color: $color-theme;
-      color: $color-white;
+    &.App-button-basic {
       background-color: $color-theme;
-    }
-  }
+      border: 1px solid $color-theme;
+      color: $color-white;
 
-  &:active {
-    opacity: 0.5;
-  }
-  &:focus {
-    outline: none;
+      &:hover {
+        border-color: $color-white;
+        background-color: $color-white;
+        color: $color-theme;
+      }
+    }
+
+    &.App-button-void {
+      background-color: transparent;
+      color: $color-theme;
+      border: 1px solid $color-theme;
+
+      &.App-button-light {
+        border-color: $color-white;
+        color: $color-white;
+      }
+
+      &:hover {
+        border-color: $color-theme;
+        color: $color-white;
+        background-color: $color-theme;
+      }
+    }
+
+    &:active {
+      opacity: 0.5;
+    }
+    &:focus {
+      outline: none;
+    }
   }
 }

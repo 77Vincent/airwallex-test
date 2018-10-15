@@ -37,13 +37,15 @@ const Button = ({
   }, style)
 
   return (
-    <button
-      className={`App-button ${buttonTypeClass} ${className} ${light ? 'App-button-light' : ''}`}
-      style={mergedStyle}
-      onClick={onClick}
-    >
-      {children}
-    </button>
+    <div className="App-button">
+      <button
+        className={`${buttonTypeClass} ${className} ${light ? 'App-button-light' : ''}`}
+        style={mergedStyle}
+        onClick={onClick}
+      >
+        {children}
+      </button>
+    </div>
   )
 }
 
