@@ -7,6 +7,7 @@ export const setRegistrationStatus = (payload = {}) => dispatch => {
   })
 }
 
+// Reset the state "registrationStatus" to its initial state so no payload will be used here
 export const resetRegistrationStatus = () => dispatch => {
   dispatch({
     type: RESET_REGISTRATION_STATUS,
